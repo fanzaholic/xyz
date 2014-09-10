@@ -6,6 +6,8 @@ class APP_Frontend extends APP_Core {
 
 	private $_logthis = TRUE;
 
+    var $_social_config = array();
+
     function __construct()
     {
         parent::__construct(array(
@@ -14,5 +16,12 @@ class APP_Frontend extends APP_Core {
         ));
 
         $this->load->model('user_model');
+
+        $this->_social_config = $this->config->item('app_social');
+
+        $this->load->library('social/facebook',array(
+                'appId' => $this->_social_config['facebook']['appId'],
+                'secret' => $this->_social_config['facebook']['secret']
+            ));
     }
 }

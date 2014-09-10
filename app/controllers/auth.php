@@ -10,6 +10,12 @@ class Auth extends APP_Frontend {
 	public function login()
 	{
 		$data = array('msg' => $this->session->flashdata('msg'));
+
+		$data['fb_login_url'] = $this->facebook->getLoginUrl(array(
+			'scope' => $this->_social_config['facebook']['scope'],
+			'redirect_uri' => base_url().$this->_social_config['facebook']['callback']
+		));
+
 		$this->_addContent($data);
 		$this->_render();
 	}

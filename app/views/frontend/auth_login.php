@@ -12,3 +12,7 @@
 		<input type="hidden" name="provider" value="email" />
 	</form>
 </p>
+
+<p>
+	<a href="<?php echo $fb_login_url; ?>">FB Login</a>
+</p>
